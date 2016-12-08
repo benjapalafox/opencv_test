@@ -33,3 +33,8 @@ width: 640 heigh: 480 fps: 30
 POS_MSEC 0
 MODE 0
 width: 640 heigh: 480 fps: 30
+width: 640 heigh: 480 fps: 30
+Video information
+width: 640 heigh: 480 fps: 30
+Video information
+width: 640 heigh: 480 fps: 30

@@ -27,6 +27,7 @@
 #define BOX_FIRST_CORNER  1
 #define BOX_DEFINED       2
 #define BOX_SELECTED      3
+#define BOX_TRACKING      4
 
 #define BOX_MIN_SIZE      24
 
@@ -100,6 +101,7 @@ int main(int argc, char **argv)
   }
   
   nsec_expected = 1000000000 / cap.get(CAP_PROP_FPS);
+  cout << "Video information" << endl;
   cout << "width: " << cap.get(CAP_PROP_FRAME_WIDTH) << " heigh: " << cap.get(CAP_PROP_FRAME_HEIGHT) << " fps: " << cap.get(CAP_PROP_FPS) << endl;
   
   box.state = BOX_UNDEFINED;
@@ -124,7 +126,7 @@ int main(int argc, char **argv)
         rectangle(frame, box.tld_box, GREEN, 2, LINE_8, 0);
       }
     }
-    //Box selected, tracking
+    //Initialize tld
     else if(box.state == BOX_SELECTED)
     {
       cvtColor(frame, gray, COLOR_BGR2GRAY, 0);
@@ -135,7 +137,14 @@ int main(int argc, char **argv)
       
       rectangle(frame, box.tld_box, BLUE, 2, LINE_8, 0);
       subimage = frame(box.tld_box);
+      box.state = BOX_TRACKING;
     }
+    //Track
+    else if(box.state == BOX_TRACKING)
+    {
+      
+    }
+    
     if(box.state != BOX_SELECTED)
     imshow("Webcam", frame); //Last thing to do is show frame
     else
